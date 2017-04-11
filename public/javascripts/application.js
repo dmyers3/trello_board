@@ -1,10 +1,15 @@
 var App = {
-  init: function() {
+  templates: JST,
+  initializeBoard: function() {
     this.board = new Board({
       "title": "Board",
-      "lists": new Lists,
+      "lists": new Lists(),
     });
+    this.boardView = new BoardView({ model: this.board });
+  },
+  init: function() {
+    this.initializeBoard();
   }
 };
 
-App.init();
+Handlebars.registerPartial('list', App.templates.list);

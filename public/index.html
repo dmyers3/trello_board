@@ -5,6 +5,7 @@
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="stylesheets/main.css">
     <script src="javascripts/vendor/all.js"></script>
+    <script src="javascripts/handlebars_templates.js"></script>
   </head>
   <body>
     <header>
@@ -12,17 +13,7 @@
       <a class="logo" href="/"><img src="images/header-logo.png" alt="company_logo"/></a>
     </header>
     <h1>Welcome to Trello</h1>
-    
-    
-    
-    <script data-name="board" type="text/x-handlebars">
-      <h1>{{title}}</h1>
-      <ul id="lists">
-        {{#each lists}}
-          {{> list}}
-        {{/each}}
-      </ul>
-    </script>
+    <div class="tester"></div>
     
     <script data-name="list" type="text/x-handlebars">
       <h2>{{title}}</h2>
@@ -33,7 +24,10 @@
       </ul>
     </script>
     
-    <script src="javascripts/models/board.js"></script>
     <script src="javascripts/application.js"></script>
+    <script src="javascripts/models/board.js"></script>
+    <script src="javascripts/collections/lists.js"></script>
+    <script src="javascripts/views/board_view.js"></script>
+    <script>App.init();</script>
   </body>
 </html> 

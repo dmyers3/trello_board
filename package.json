@@ -17,6 +17,7 @@
   },
   "devDependencies": {
     "grunt-bower-concat": "^1.0.0",
+    "grunt-contrib-handlebars": "^1.0.0",
     "grunt-contrib-uglify": "^2.3.0"
   }
 }
