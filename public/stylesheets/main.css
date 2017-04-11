@@ -1,0 +1,49 @@
+@import "whitespace-reset-modified.css";
+
+header {
+  /*background: #026aa7;*/
+  background: rgba(0, 0, 0, .15);
+  padding: 5px;
+  position: relative;
+}
+
+body {
+  background: #00AECC;
+  font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+input[type="search"] {
+  width: 180px;
+  height: 30px;
+  border-radius: 3px;
+  border: none;
+  vertical-align: top;
+  padding: 5px;
+  transition: width 150ms;
+  background: rgba(255, 255, 255, .3) url("../images/search.png") no-repeat 95%;
+  background-size: 20px 20px;
+}
+
+input[type="search"]:focus {
+  background: #ffffff;
+  width: 280px;
+  transition: width 150ms;
+}
+
+input[type="search"]:hover {
+  background: rgba(255, 255, 255, .4) url("../images/search.png") no-repeat 95%;
+  background-size: 20px 20px;
+}
+
+input[type="search"]:hover:focus {
+  background: #ffffff;
+  width: 280px;
+}
+
+a.logo {
+  display: inline-block;
+  margin: 0 auto;
+  position: absolute;
+  left: 50%;
+  margin-left: -90px;
+}
