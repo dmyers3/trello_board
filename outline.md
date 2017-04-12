@@ -87,3 +87,12 @@ Menu
   Change Background
   Filter Cards
   Activity
+
+<div id="board"> - hardcode that into index HTML
+set that as boardView el so that board view is added to this
+
+List view el should be li since its part of BoardView ul?
+
+Board
+  title: "Board"
+  lists: {"last_id": 0, "data": [ {title: "title1", cards: {last_id: 0, "data": { ]

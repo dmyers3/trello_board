@@ -1,7 +1,31 @@
+include /_mixins.jade
+
 doctype html
-html
+html(lang="en-US")
   head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    title Trello
+    meta(charset="UTF-8")
+    +stylesheet_link_tag("main")
   body
-    block content
+    header
+      input(type="search")
+      a(class="logo" href="/")
+        img(src="images/header-logo.png" alt="company_logo")
+    main
+      block content
+    
+    +javascript_include_tag("vendor/all")
+    +javascript_include_tag("handlebars_templates")
+    +javascript_include_tag("application")
+    +javascript_include_tag("models/board", "models/list", "models/card", "models/comment")
+    +javascript_include_tag("collections/lists", "collections/cards", "collections/comments")
+    +javascript_include_tag("views/board_view", "views/lists_view", "views/list_view")
+    script(type="text/javascript").
+      App.board = new Board(!{JSON.stringify(board)});
+      App.lists = new Lists(!{JSON.stringify(lists)});
+      App.cards = new Cards(!{JSON.stringify(cards)});
+      App.comments = new Comments(!{JSON.stringify(comments)});
+    script App.init();
+
+include /_mixins.jade
+

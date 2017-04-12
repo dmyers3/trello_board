@@ -30,6 +30,10 @@ app.use(function(req, res, next) {
   next(err);
 });
 
+// path.join basically creates "./views" (current dir/views)
+// so if we move application as long as views dir is relative to this file it will work
+app.locals.basedir = path.join(__dirname, 'views');
+
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
