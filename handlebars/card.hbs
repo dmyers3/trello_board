@@ -1,1 +1,20 @@
-<span>Test</span>
+<p>{{title}}</p>
+{{#if labels}}
+  <div class="labels">
+    {{#each labels}}
+      <div class="label {{color}}"
+    {{/each}}
+  </div>
+{{/if}}
+{{#if subscribed}}
+  <div class="subscribed"></div>
+{{/if}}
+{{#if due_date}}
+  <div class="due_date">{{due_date}}</div>
+{{/if}}
+{{#if description}}
+  <div class="description"></div>
+{{/if}}
+{{#if comments}}
+  <div class="comments">{{total}}</div>
+{{/if}}

@@ -5,6 +5,14 @@ var BoardView = Backbone.View.extend({
       title: this.model.get('title'),
     }));
   },
+  events: {
+    "submit .rename_board": "renameBoard"
+  },
+  renameBoard: function(e) {
+    e.preventDefault();
+    this.model.set('title', $('.rename_board input').val());
+    console.log(this.model.toJSON());
+  },
   initialize: function() {
     this.render();
     

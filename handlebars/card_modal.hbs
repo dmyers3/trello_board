@@ -1,0 +1,38 @@
+<a class="close" href="#">Close Modal</a>
+<div class="card_modal">
+  <h2>{{title}}</h2>
+  <p>in list <a href="#">List Placeholder</a></p>
+  <article>
+    {{#if due_date}}
+      <p>Due Date</p>
+      <a class="due_date" href="#">{{due_date}}</a>
+    {{/if}}
+    {{#if description}}
+      <p>Description <a href="#">Edit</a></p>
+      <p>{{description}}</p>
+    {{else}}
+      <a href="#">Edit the description...</a>
+    {{/if}}
+    <h2>Add Comment</h2>
+    <form>
+      <input type="text" placeholder="Write a comment..." />
+      <button type="submit">Send</button>
+    </form>
+  </article>
+  <aside>
+    <h3>Add</h3>
+    <ul class="add">
+      <li><a href="#">Labels</a></li>
+      <li><a href="#">Due Date</a></li>
+    </ul>
+    <h3>Actions</h3>
+    <ul class="actions">
+      <li><a href="#">Move</a></li>
+      <li><a href="#">Copy</a></li>
+      <li><a href="#">Subscribe</a></li>
+      <li><a href="#">Archive</a></li>
+    </ul>
+  </aside>
+</div>
+
+

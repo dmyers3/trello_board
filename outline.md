@@ -93,6 +93,11 @@ set that as boardView el so that board view is added to this
 
 List view el should be li since its part of BoardView ul?
 
-Board
-  title: "Board"
-  lists: {"last_id": 0, "data": [ {title: "title1", cards: {last_id: 0, "data": { ]
+
+Presentation
+
+How to represent data? Separate board/lists/cards or try to combine?
+
+
+  
+  
