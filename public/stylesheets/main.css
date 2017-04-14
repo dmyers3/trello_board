@@ -9,7 +9,7 @@ header {
 }
 
 html {
-  /*height: 100%;*/
+  height: 100%;
   margin: 0;
   padding: 0;
 }
@@ -91,7 +91,7 @@ h1 .title:hover {
   position: absolute;
   left: 8px;
   top: 50px;
-  /*display: none;*/
+  display: none;
   width: 300px;
   z-index: 30;
   background: #ffffff;
@@ -124,9 +124,12 @@ h1 .title:hover {
   background-color: #e2e4e6;
   margin-bottom: 10px;
   width: 100%;
+  padding: 6px;
+  box-sizing: border-box;
+  color: #4d4d4d;
 }
 
-.title_popup button {
+.btn {
   padding: 10px 30px;
   background: linear-gradient(to bottom, #61BD4F 0, #5AAC44 100%);
   box-shadow: 0 1px 0 #3f6F21;
@@ -139,7 +142,7 @@ h1 .title:hover {
   border-radius: 3px;
 }
 
-.title_popup button:hover {
+.btn:hover {
   background: linear-gradient(to bottom, #5AAC44 0, #519839 100%);
 }
 
@@ -157,6 +160,17 @@ h2 {
   padding-bottom: 10px;
 }
 
+/*.lists_container::-webkit-scrollbar {*/
+/*  height: 9px;*/
+/*  width: 9px;*/
+/*  position: fixed;*/
+/*  bottom: 8px;*/
+/*}*/
+
+/*.lists_container::-webkit-scrollbar-track-piece {*/
+/*  background: #D6DADC;*/
+/*}*/
+
 #lists {
   display: inline-block;
   vertical-align: top;
@@ -169,20 +183,47 @@ h2 {
   background: #E2E4E6;
   width: 270px;
   margin: 0 5px 5px 5px;
-  padding: 8px 4px;
+  padding: 8px 4px 0 4px;
   border-radius: 3px;
   cursor: pointer;
+  box-sizing: border-box;
+}
+
+.add_list.container {
+  width: 270px;
+  margin-left: 5px;
 }
 
 .add_list {
   display: inline-block;
   vertical-align: top;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.add_list.display {
   width: 270px;
 }
 
+.add_list.action input {
+  background: rgba(0, 0, 0, .05);
+  border-color: #aaaaaa;
+  box-shadow: inset 0 1px 8px rgba(0, 0, 0, 0.15);
+  border: 1px solid #cdd2d4;
+  color: #4d4d4d;
+}
+
+.add_list.action {
+  background: #E2E4E6;
+  width: 270px;
+  box-sizing: border-box;
+  border-radius: 3px;
+  padding: 6px;
+}
+
 .add_list input {
-  display: inline-block;
-  height: 30px;
+  display: block;
+  height: 40px;
   width: 100%;
   cursor: pointer;
   background: rgba(0, 0, 0, .15);
@@ -190,8 +231,26 @@ h2 {
   border: none;
   border-radius: 3px;
   padding: 8px;
-  margin: 0 5px 5px 5px;
+  margin: 0 0 5px 0;
+  box-sizing: border-box;
 }
+
+.add_list.action input::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color: #4d4d4d;
+}
+.add_list.action input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color: #4d4d4d;
+   opacity:  1;
+}
+.add_list.action input::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color: #4d4d4d;
+   opacity:  1;
+}
+.add_list.action input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color: #4d4d4d;
+}
+
+
 
 .add_list input::-webkit-input-placeholder { /* WebKit, Blink, Edge */
     color:    rgba(255, 255, 255, .7);
@@ -208,18 +267,23 @@ h2 {
    color:    rgba(255, 255, 255, .7);
 }
 
-.add_list input:hover {
+.add_list.display input:hover {
   background: rgba(0, 0, 0, .3);
+}
+
+.add_list.action {
+  display: none;
 }
 
 #cards li {
   background: #ffffff;
-  min-height: 20px;
-  padding: 5px;
-  margin: 0 0 5px 0;
+  min-height: 35px;
+  padding: 8px 6px 4px 6px;
+  margin: 0 0 8px 0;
   border-radius: 3px;
   cursor: pointer;
   border-bottom: 1px solid #cccccc;
+  box-sizing: border-box;
 }
 
 #cards li:hover {
@@ -302,3 +366,45 @@ h3 {
   left: 0;
   z-index: 9;
 }
+
+.add_card.action textarea {
+  display: block;
+  width: 100%;
+  height: 50px;
+  border-radius: 3px;
+  font: inherit;
+  padding: 5px;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+.add_card.action {
+  display: none;
+}
+
+.add_card.btn {
+  padding: 8px 16px;
+}
+
+.add_card.display {
+  height: 35px;
+  padding: 10px 5px 0 5px;
+  box-sizing: border-box;
+}
+
+.add_card.display:hover {
+  background: #cdd2d4;
+}
+
+.add_card.display:hover > a {
+  text-decoration: underline;
+  color: #4d4d4d;
+}
+
+.add_card a {
+  text-decoration: none;
+  color: #8c8c8c;
+}
+
+
+

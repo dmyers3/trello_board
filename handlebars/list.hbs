@@ -1,4 +1,15 @@
 <h2>{{title}}</h2>
 <ul id="cards">
 </ul>
-<a href="#">Add a card...</a>
+<div class="add_card container">
+  <div class="add_card display">
+    <a class="add_card" href="#">Add a card...</a>
+  </div>
+  <div class="add_card action">
+    <form method="post" action="/lists" class="add_card">
+      <textarea></textarea>
+      <button class="btn add_card" type="submit">Add</button>
+    </form>
+  </div>
+</div>
+  

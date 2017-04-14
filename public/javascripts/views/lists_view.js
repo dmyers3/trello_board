@@ -9,7 +9,8 @@ ListsView = Backbone.View.extend({
   renderList: function(list) {
     this.$el.append(new ListView({
       model: list,
-      tagName: 'li'
+      tagName: 'li',
+      attributes: { "data-id": list.get('id') }
     }).el);
   }
 });

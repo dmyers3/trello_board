@@ -2,19 +2,29 @@
   <h1><span class="title">{{title}}</span></h1>
   <div class="title_popup">
     <h2>Rename Board</h2>
-    <form class="rename_board">
+    <form method="post" action="/board" class="rename_board">
       <label>Name</label>
       <input type="text" />
-      <button type="submit">Rename</button>
+      <button class="btn" type="submit">Rename</button>
     </form>
   </div>
 </div>
 <div class="lists_container">
   <ul id="lists">
   </ul>
-  <form class="add_list">
-    <input type="text" placeholder="Add a list..." />
-  </form>
+  <div class="add_list container">
+    <div class="add_list display">
+      <form method="post" action="/lists">
+        <input type="text" placeholder="Add a list..." />
+      </form>
+    </div>
+    <div class="add_list action">
+      <form method="post" action="/lists" class="add_list">
+        <input name="list_title" type="text" placeholder="Add a list..." />
+        <button class="btn add_list" type="submit">Save</button>
+      </form>
+    </div>
+  </div>
 </div>
 
 

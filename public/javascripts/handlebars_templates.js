@@ -5,7 +5,7 @@ this["JST"]["board"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":fun
 
   return "<div class=\"title_container\"><h1><span class=\"title\">"
     + container.escapeExpression(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"title","hash":{},"data":data}) : helper)))
-    + "</span></h1><div class=\"title_popup\"><h2>Rename Board</h2><form class=\"rename_board\"><label>Name</label><input type=\"text\" /><button type=\"submit\">Rename</button></form></div></div><div class=\"lists_container\"><ul id=\"lists\"></ul><form class=\"add_list\"><input type=\"text\" placeholder=\"Add a list...\" /></form></div>";
+    + "</span></h1><div class=\"title_popup\"><h2>Rename Board</h2><form method=\"post\" action=\"/board\" class=\"rename_board\"><label>Name</label><input type=\"text\" /><button class=\"btn\" type=\"submit\">Rename</button></form></div></div><div class=\"lists_container\"><ul id=\"lists\"></ul><div class=\"add_list container\"><div class=\"add_list display\"><form method=\"post\" action=\"/lists\"><input type=\"text\" placeholder=\"Add a list...\" /></form></div><div class=\"add_list action\"><form method=\"post\" action=\"/lists\" class=\"add_list\"><input name=\"list_title\" type=\"text\" placeholder=\"Add a list...\" /><button class=\"btn add_list\" type=\"submit\">Save</button></form></div></div></div>";
 },"useData":true});
 
 this["JST"]["card_modal"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
@@ -79,5 +79,5 @@ this["JST"]["list"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":func
 
   return "<h2>"
     + container.escapeExpression(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"title","hash":{},"data":data}) : helper)))
-    + "</h2><ul id=\"cards\"></ul><a href=\"#\">Add a card...</a>";
+    + "</h2><ul id=\"cards\"></ul><div class=\"add_card container\"><div class=\"add_card display\"><a class=\"add_card\" href=\"#\">Add a card...</a></div><div class=\"add_card action\"><form method=\"post\" action=\"/lists\" class=\"add_card\"><textarea></textarea><button class=\"btn add_card\" type=\"submit\">Add</button></form></div></div>";
 },"useData":true});

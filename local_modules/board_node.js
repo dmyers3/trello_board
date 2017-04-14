@@ -1,5 +1,6 @@
 var path = require('path');
 var fs = require('fs');
+var _ = require('underscore');
 
 // returns string that reprensents content of the file
 // path normalizes file path so you don't need to be aware of relative location
@@ -15,15 +16,10 @@ var Board = {
     albumsData.data.push(album);
     fs.writeFileSync(filePath, JSON.stringify(albumsData), "utf8");
   },
-  update: function(albumData) {
-    var id = albumData.id;
-    var album = _(Albums.get()).findWhere( {id: id});
-    album.title = albumData.title;
-    album.artist = albumData.artist;
-    album.date = albumData.date;
-    album.price = albumData.price;
-    album.cover = albumData.cover;
-    fs.writeFileSync(filePath, JSON.stringify(albumsData), "utf8");
+  update: function(boardData) {
+    var board = JSON.parse(fs.readFileSync(filePath, "utf8"));
+    board.data.title = boardData.title;
+    fs.writeFileSync(filePath, JSON.stringify(board), "utf8");
   },
   delete: function(albumData) {
     var id = albumData.id;
