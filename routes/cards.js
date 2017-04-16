@@ -10,8 +10,8 @@ module.exports = function(router) {
     res.json(card);
   });
   
-  router.put('/board', function(req, res, next) {
-    Board.update(req.body);
+  router.put('/cards/:id', function(req, res, next) {
+    Cards.update(req.body);
     res.json({});
   });
 }

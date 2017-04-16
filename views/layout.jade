@@ -5,7 +5,11 @@ html(lang="en-US")
   head
     title Trello
     meta(charset="UTF-8")
+    link(href="https://code.jquery.com/ui/1.10.2/themes/blitzer/jquery-ui.css" rel="stylesheet" type="text/css")
+    link(href="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.min.css" rel="stylesheet" type="text/css")
     +stylesheet_link_tag("main")
+    
+    
   body
     header
       input(type="search")
@@ -15,6 +19,8 @@ html(lang="en-US")
       block content
     
     +javascript_include_tag("vendor/all")
+    script(src="https://code.jquery.com/ui/1.10.2/jquery-ui.min.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.min.js")
     +javascript_include_tag("handlebars_templates")
     +javascript_include_tag("application")
     +javascript_include_tag("models/board", "models/list", "models/card", "models/comment")

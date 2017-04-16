@@ -16,15 +16,25 @@ var Cards = {
     cardsData.data.push(card);
     fs.writeFileSync(filePath, JSON.stringify(cardsData), "utf8");
   },
-  update: function(albumData) {
-    var id = albumData.id;
-    var album = _(Albums.get()).findWhere( {id: id});
-    album.title = albumData.title;
-    album.artist = albumData.artist;
-    album.date = albumData.date;
-    album.price = albumData.price;
-    album.cover = albumData.cover;
-    fs.writeFileSync(filePath, JSON.stringify(albumsData), "utf8");
+  update: function(cardData) {
+    var id = cardData.id;
+    var cardsData = JSON.parse(fs.readFileSync(filePath, "utf8"));
+    var cards = cardsData.data;
+    var card = _(cards).findWhere( {id: id});
+    for (var key in cardData) {
+      if (cardData[key] === '') {
+        delete card[key]
+      } else {
+        card[key] = cardData[key];
+      }
+    }
+    
+    // card.title = cardData.title;
+    // album.artist = albumData.artist;
+    // album.date = albumData.date;
+    // album.price = albumData.price;
+    // album.cover = albumData.cover;
+    fs.writeFileSync(filePath, JSON.stringify(cardsData), "utf8");
   },
   delete: function(albumData) {
     var id = albumData.id;

@@ -2,37 +2,63 @@
 <div class="card_modal">
   <h2>{{title}}</h2>
   <p>in list <a href="#">List Placeholder</a></p>
-  <article>
-    {{#if due_date}}
-      <p>Due Date</p>
-      <a class="due_date" href="#">{{due_date}}</a>
-    {{/if}}
-    {{#if description}}
-      <p>Description <a href="#">Edit</a></p>
-      <p>{{description}}</p>
-    {{else}}
-      <a href="#">Edit the description...</a>
-    {{/if}}
-    <h2>Add Comment</h2>
-    <form>
-      <input type="text" placeholder="Write a comment..." />
-      <button type="submit">Send</button>
-    </form>
-  </article>
-  <aside>
-    <h3>Add</h3>
-    <ul class="add">
-      <li><a href="#">Labels</a></li>
-      <li><a href="#">Due Date</a></li>
-    </ul>
-    <h3>Actions</h3>
-    <ul class="actions">
-      <li><a href="#">Move</a></li>
-      <li><a href="#">Copy</a></li>
-      <li><a href="#">Subscribe</a></li>
-      <li><a href="#">Archive</a></li>
-    </ul>
-  </aside>
+  <div class="main_container">
+    <article>
+      {{#if due_date}}
+        <p>Due Date</p>
+        <a class="due_date" href="#">{{due_date}}</a>
+      {{/if}}
+      <div class="edit_description container">
+        {{#if description}}
+          <div class="edit_description display">
+            <p class="link">Description <a class="edit" href="#">Edit</a></p>
+            <p class="description">{{description}}</p>
+          </div>
+        {{else}}
+          <div class="edit_description display">
+            <a class="edit" href="#">Edit the description...</a>
+          </div>
+        {{/if}}
+        <div class="edit_description action">
+          <form method="post" action="/cards" class="edit_description">
+            <textarea></textarea>
+            <button class="btn edit_description" type="submit">Save</button>
+          </form>
+        </div>
+      </div>
+      
+      <h2>Add Comment</h2>
+      <form>
+        <textarea placeholder="Write a comment..."></textarea>
+        <button class="btn" type="submit">Send</button>
+      </form>
+    </article>
+    <aside>
+      <h3>Add</h3>
+      <ul class="add">
+        <li><a href="#">Labels</a></li>
+        <li><a class="due_date" href="#">Due Date</a></li>
+      </ul>
+      <div class="date_popup">
+        <h2>Change Due Date</h2>
+        <form method="post" action="/cards" class="change_due_date">
+          <label>Date</label>
+          <input type="text" id="date_picker"/>
+          <label>Time</label>
+          <input type="text" id="time_picker"/>
+          <button class="btn save" type="submit">Save</button>
+          <button class="btn remove" type="reset">Remove</button>
+        </form>
+      </div>
+      <h3>Actions</h3>
+      <ul class="actions">
+        <li><a href="#">Move</a></li>
+        <li><a href="#">Copy</a></li>
+        <li><a href="#">Subscribe</a></li>
+        <li><a href="#">Archive</a></li>
+      </ul>
+    </aside>
+  </div>
 </div>
 
 

@@ -17,20 +17,21 @@ this["JST"]["card_modal"] = Handlebars.template({"1":function(container,depth0,h
 },"3":function(container,depth0,helpers,partials,data) {
     var helper;
 
-  return "<p>Description <a href=\"#\">Edit</a></p><p>"
+  return "<div class=\"edit_description display\"><p class=\"link\">Description <a class=\"edit\" href=\"#\">Edit</a></p><p class=\"description\">"
     + container.escapeExpression(((helper = (helper = helpers.description || (depth0 != null ? depth0.description : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"description","hash":{},"data":data}) : helper)))
-    + "</p>";
+    + "</p></div>";
 },"5":function(container,depth0,helpers,partials,data) {
-    return "<a href=\"#\">Edit the description...</a>";
+    return "<div class=\"edit_description display\"><a class=\"edit\" href=\"#\">Edit the description...</a></div>";
 },"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1, helper, alias1=depth0 != null ? depth0 : {};
 
   return "<a class=\"close\" href=\"#\">Close Modal</a><div class=\"card_modal\"><h2>"
     + container.escapeExpression(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(alias1,{"name":"title","hash":{},"data":data}) : helper)))
-    + "</h2><p>in list <a href=\"#\">List Placeholder</a></p><article>"
+    + "</h2><p>in list <a href=\"#\">List Placeholder</a></p><div class=\"main_container\"><article>"
     + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.due_date : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "<div class=\"edit_description container\">"
     + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.description : depth0),{"name":"if","hash":{},"fn":container.program(3, data, 0),"inverse":container.program(5, data, 0),"data":data})) != null ? stack1 : "")
-    + "<h2>Add Comment</h2><form><input type=\"text\" placeholder=\"Write a comment...\" /><button type=\"submit\">Send</button></form></article><aside><h3>Add</h3><ul class=\"add\"><li><a href=\"#\">Labels</a></li><li><a href=\"#\">Due Date</a></li></ul><h3>Actions</h3><ul class=\"actions\"><li><a href=\"#\">Move</a></li><li><a href=\"#\">Copy</a></li><li><a href=\"#\">Subscribe</a></li><li><a href=\"#\">Archive</a></li></ul></aside></div>";
+    + "<div class=\"edit_description action\"><form method=\"post\" action=\"/cards\" class=\"edit_description\"><textarea></textarea><button class=\"btn edit_description\" type=\"submit\">Save</button></form></div></div><h2>Add Comment</h2><form><textarea placeholder=\"Write a comment...\"></textarea><button class=\"btn\" type=\"submit\">Send</button></form></article><aside><h3>Add</h3><ul class=\"add\"><li><a href=\"#\">Labels</a></li><li><a class=\"due_date\" href=\"#\">Due Date</a></li></ul><div class=\"date_popup\"><h2>Change Due Date</h2><form method=\"post\" action=\"/cards\" class=\"change_due_date\"><label>Date</label><input type=\"text\" id=\"date_picker\"/><label>Time</label><input type=\"text\" id=\"time_picker\"/><button class=\"btn save\" type=\"submit\">Save</button><button class=\"btn remove\" type=\"reset\">Remove</button></form></div><h3>Actions</h3><ul class=\"actions\"><li><a href=\"#\">Move</a></li><li><a href=\"#\">Copy</a></li><li><a href=\"#\">Subscribe</a></li><li><a href=\"#\">Archive</a></li></ul></aside></div></div>";
 },"useData":true});
 
 this["JST"]["card"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
