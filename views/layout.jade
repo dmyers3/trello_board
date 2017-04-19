@@ -8,6 +8,7 @@ html(lang="en-US")
     link(href="https://code.jquery.com/ui/1.10.2/themes/blitzer/jquery-ui.css" rel="stylesheet" type="text/css")
     link(href="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.min.css" rel="stylesheet" type="text/css")
     +stylesheet_link_tag("main")
+    +stylesheet_link_tag("dragula.min")
     
     
   body
@@ -23,9 +24,10 @@ html(lang="en-US")
     script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.min.js")
     +javascript_include_tag("handlebars_templates")
     +javascript_include_tag("application")
-    +javascript_include_tag("models/board", "models/list", "models/card", "models/comment")
-    +javascript_include_tag("collections/lists", "collections/cards", "collections/comments")
-    +javascript_include_tag("views/board_view", "views/lists_view", "views/list_view", "views/cards_view", "views/card_view", "views/card_modal")
+    +javascript_include_tag("models/board", "models/list", "models/card", "models/comment", "models/label")
+    +javascript_include_tag("collections/lists", "collections/cards", "collections/comments", "collections/labels")
+    +javascript_include_tag("views/board_view", "views/lists_view", "views/list_view", "views/cards_view", "views/card_view")
+    +javascript_include_tag("views/copy", "views/card_modal", "views/labels_view", "views/comment_view", "views/comments_view")
     script(type="text/javascript").
       App.board = new Board(!{JSON.stringify(board)});
       App.lists = new Lists(!{JSON.stringify(lists)});

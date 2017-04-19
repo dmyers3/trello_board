@@ -1,11 +1,11 @@
-<p>{{title}}</p>
 {{#if labels}}
   <div class="labels">
     {{#each labels}}
-      <div class="label {{color}}"
+      <div class="label min {{this}}"></div>
     {{/each}}
   </div>
 {{/if}}
+<p class="title">{{title}}</p>
 {{#if subscribed}}
   <div class="subscribed"></div>
 {{/if}}

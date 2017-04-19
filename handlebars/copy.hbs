@@ -1,0 +1,22 @@
+<h2>Copy Card <span class="x_close">X</span></h2>
+<form method="post" action="/cards" class="copy">
+  <label>Title</label>
+  <textarea name="title">{{title}}</textarea>
+  <label>Copy to...</label>
+  <select name="board" class="boards">
+    {{#with board}}
+      <option value="{{id}}">{{title}}</option>
+    {{/with}}
+  </select>
+  <select name="list" class="lists">
+    {{#each lists}}
+      <option value="{{id}}">{{title}}</option>
+    {{/each}}
+  </select>
+  <select name="position" class="positions">
+    {{#each positions}}
+      <option value="{{this}}">{{this}}</option>
+    {{/each}}
+  </select>
+  <button class="btn" type="submit">Create Card</button>
+</form>

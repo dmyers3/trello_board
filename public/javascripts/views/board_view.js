@@ -7,7 +7,7 @@ var BoardView = Backbone.View.extend({
   },
   events: {
     "submit .rename_board": "renameBoard",
-    "click .title": "toggleTitlePopup",
+    "click h1 .title": "toggleTitlePopup",
     "click .add_list.container": "toggleAddListDisplay"
   },
   renameBoard: function(e) {
@@ -38,12 +38,16 @@ var BoardView = Backbone.View.extend({
     e.preventDefault();
     var title = $('.add_list.action input').val();
     if (title.length > 0) {
-      var newList = new List({title: title, boardId: this.model.get('id')});
+      var prevNumOfLists = $('#lists > li').length;
+      var newList = new List({title: title, boardId: this.model.get('id'), position: prevNumOfLists});
       // Adds newList to Board's List Collection:
-      this.model.get('lists').create(newList);
+      var self = this;
+      newList = this.model.get('lists').create(newList, {
+        success: function() {
+          self.listsView.renderList(newList);
+        }
+      });
       $('.add_list.action input').val('');
-      
-      this.listsView.renderList(newList);
     }
   },
   hideAddListPopup: function(e) {

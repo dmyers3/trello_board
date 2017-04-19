@@ -16,15 +16,27 @@ var Lists = {
     listsData.data.push(list);
     fs.writeFileSync(filePath, JSON.stringify(listsData), "utf8");
   },
-  update: function(albumData) {
-    var id = albumData.id;
-    var album = _(Albums.get()).findWhere( {id: id});
-    album.title = albumData.title;
-    album.artist = albumData.artist;
-    album.date = albumData.date;
-    album.price = albumData.price;
-    album.cover = albumData.cover;
-    fs.writeFileSync(filePath, JSON.stringify(albumsData), "utf8");
+  update: function(listData) {
+    var id = listData.id;
+    var listsData = JSON.parse(fs.readFileSync(filePath, "utf8"));
+    var lists = listsData.data;
+    var list = _(lists).findWhere( {id: id});
+    for (var key in listData) {
+      if (listData[key] === '' || key === 'cards') {
+        delete list[key]
+      } else {
+        list[key] = listData[key];
+      }
+    }
+    fs.writeFileSync(filePath, JSON.stringify(listsData), "utf8");
+    return list;
+  },
+  updateAll: function(newLists) {
+    var oldListsData = JSON.parse(fs.readFileSync(filePath, "utf8"));
+    var oldLists = oldListsData.data;
+    oldLists = newLists;
+    fs.writeFileSync(filePath, JSON.stringify(oldListsData), "utf8");
+    
   },
   delete: function(albumData) {
     var id = albumData.id;

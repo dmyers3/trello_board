@@ -14,4 +14,11 @@ module.exports = function(router) {
     Cards.update(req.body);
     res.json({});
   });
+  
+  router.delete('/cards/:id', function(req, res, next) {
+    var id = req.params.id;
+    Cards.delete(id);
+    res.status(200).end();
+  });
+  
 }

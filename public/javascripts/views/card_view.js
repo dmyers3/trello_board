@@ -1,4 +1,5 @@
 var CardView = Backbone.View.extend({
+  className: 'card',
   template: App.templates.card,
   events: {
     'click': 'modalPopup'
@@ -13,6 +14,9 @@ var CardView = Backbone.View.extend({
   initialize: function() {
     this.render();
     
+    this.model.setComments(App.comments);
+    
     this.listenTo(this.model, 'change', this.render);
+    this.listenTo(this.model, 'destroy', this.remove);
   }
 });

@@ -1,0 +1,13 @@
+<div class="labels_main">
+  <h2>Labels<span class="x_close">X</span></h2>
+  <input type="text" placeholder="Search labels..." />
+  <ul>
+    {{#each labels}}
+    <li data-id="{{id}}" class="label {{color}}">{{title}}<span class="selected"><img src="images/check-mark.png" alt="selected" /></span></li>
+    {{/each}}
+  </ul>
+  <a href="#">Create a new label</a>
+</div>
+<div class="labels_change">
+  
+</div>

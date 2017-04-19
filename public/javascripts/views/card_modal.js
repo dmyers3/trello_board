@@ -5,9 +5,47 @@ var CardModal = Backbone.View.extend({
     "click .close": "removeModal",
     "click a.edit": "showEditDescription",
     "click a.due_date": "showEditDueDate",
+    "click a.labels": "showEditLabels",
+    "click .x_close.description": "hideEditDescription",
+    "click .actions .archive": "deleteCard",
+    "click .actions .copy": "copyCard",
+    "click .actions .subscribe": "toggleSubscribed",
     "submit form.edit_description": "editDescription",
     "submit form.change_due_date": "editDueDate",
+    "submit form.submit_comment": "submitComment",
     "reset form.change_due_date": "removeDueDate",
+  },
+  submitComment: function(e) {
+    e.preventDefault();
+    var date = new Date();
+    var newComment = new Comment({cardId: this.model.get('id'), content: $('.submit_comment textarea').val(), date: date});
+    this.model.get('comments').create(newComment);
+    new CommentView({model: newComment, tagName: 'li'});
+    $('.submit_comment textarea').val('');
+  },
+  toggleSubscribed: function(e) {
+    e.preventDefault();
+    var subscribed;
+    if (this.model.get('subscribed')) {
+      subscribed = '';
+    } else {
+      subscribed = true;
+    }
+    this.model.set('subscribed', subscribed);
+    this.model.save({subscribed: subscribed});
+    $('.actions .subscribe').toggleClass('true');
+  },
+  deleteCard: function(e) {
+    e.preventDefault();
+    var confirm = window.confirm('Are you sure? This cannot be undone.');
+    if (confirm === true) {
+      this.model.destroy();
+    }
+    this.removeModal(e);
+  },
+  copyCard: function(e) {
+    e.preventDefault();
+    new CopyView({model: this.model, className: 'copyContainer'})
   },
   showEditDescription: function(e) {
     e.preventDefault();
@@ -17,11 +55,21 @@ var CardModal = Backbone.View.extend({
     this.$('.edit_description.display .description').hide();
     this.$('.edit_description.action textarea').html(description);
   },
+  hideEditDescription: function(e) {
+    e.preventDefault();
+    this.$('a.edit').show();
+    this.$('.edit_description.action').hide();
+    this.$('.edit_description.display .description').show();
+  },
   showEditDueDate: function(e) {
     e.preventDefault();
     this.$('.date_popup').show();
     $('#date_picker').datepicker();
     $('#time_picker').timepicker();
+  },
+  showEditLabels: function(e) {
+    e.preventDefault();
+    new LabelsView({model: this.model});
   },
   editDueDate: function(e) {
     e.preventDefault();
@@ -53,6 +101,11 @@ var CardModal = Backbone.View.extend({
   },
   initialize: function() {
     this.render();
+    
+    this.commentsView = new CommentsView({
+      el: this.$('ul#comments'),
+      collection: this.model.get('comments'),
+    });
   },
   render: function() {
     $('body').append(this.$el.html(this.template(this.model.toJSON())));

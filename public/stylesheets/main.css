@@ -189,6 +189,21 @@ h2 {
   box-sizing: border-box;
 }
 
+form.list_title {
+  display: none;
+}
+
+form.list_title input {
+  border-radius: 3px;
+  height: 25px;
+  width: 100%;
+  color: #8d8d8d;
+  padding: 4px;
+  box-sizing: border-box;
+  border: none;
+  margin-bottom: 6px;
+}
+
 .add_list.container {
   width: 270px;
   margin-left: 5px;
@@ -275,7 +290,11 @@ h2 {
   display: none;
 }
 
-#cards li {
+ul.cards {
+  min-height: 10px;
+}
+
+.cards li {
   background: #ffffff;
   min-height: 35px;
   padding: 8px 6px 4px 6px;
@@ -286,7 +305,7 @@ h2 {
   box-sizing: border-box;
 }
 
-#cards li:hover {
+.cards li:hover {
   background: #edeff0;
 }
 
@@ -571,7 +590,21 @@ h3 {
     border: none;
 }
 
-.label {
+.card .title {
+  margin-bottom: 4px;
+}
+
+.labels:after {
+  display: block;
+  content: "";
+  clear: both;
+}
+
+.labels {
+  margin-bottom: 2px;
+}
+
+.label.min {
   float: left;
   height: 8px;
   padding: 0;
@@ -604,5 +637,178 @@ h3 {
   background: #0079BF;
 }
 
+.ui-datepicker-next, .ui-datepicker-prev {
+  background: #eeeeee;
+}
 
+.labels_main {
+  
+}
 
+.labels_popup {
+  position: absolute;
+  left: -40px;
+  top: 80px;
+  /*display: none;*/
+  width: 300px;
+  z-index: 30;
+  background: #ffffff;
+  padding: 8px;
+  border: 1px solid #8c8c8c;
+  border-radius: 3px;
+}
+
+.labels_popup h2 {
+  text-align: center;
+  padding: 2px 0 10px;
+  border-bottom: 1px solid #d6dadc;
+  color: #8c8c8c;
+  font-weight: normal;
+  font-size: 1em;
+  margin-bottom: 8px;
+}
+
+.labels_popup input {
+  display: block;
+  height: 35px;
+  border-radius: 3px;
+  border: 1px solid #cdd2d4;
+  background-color: #e2e4e6;
+  margin-bottom: 10px;
+  width: 100%;
+  padding: 6px;
+  box-sizing: border-box;
+  color: #4d4d4d;
+}
+
+.x_close {
+  float: right;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.labels_main ul {
+  margin-right: 50px;
+}
+
+.labels_main li {
+  width: 100%;
+  margin: 0 0px 4px 0;
+  padding: 8px;
+  box-sizing: border-box;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.labels_main li:hover {
+  
+}
+
+.labels_main .selected img {
+  display: none;
+}
+
+.labels_main .selected img.selected {
+  display: inline-block;
+}
+
+.card_modal .labels_main a {
+  background: #ffffff;
+  text-decoration: underline;
+  color: #8c8c8c;
+  font-weight: normal;
+}
+
+.card_modal .labels_main a:hover {
+  background: #D6DADC;
+  color: #4d4d4d;
+}
+
+.labels_main li img {
+  width: 12px;
+  float: right;
+}
+
+.labels_main li span {
+  width: 100%;
+  display: inline-block;
+}
+
+#comments li a {
+  display: inline-block;
+  margin-right: 8px;
+}
+
+.btn.submit_comment {
+  margin-bottom: 25px;
+}
+
+#comments p {
+  padding: 8px;
+  background: #ffffff;
+  color: #4d4d4d;
+  border-radius: 3px;
+  margin-bottom: 10px;
+}
+
+.edit_comment_popup {
+  display: none;
+}
+
+.x_close.comment, .x_close.description {
+  float: none;
+  font-size: 1.3em;
+  color: #999999;
+  padding-left: 10px;
+}
+
+.copyContainer {
+  position: absolute;
+  left: 0px;
+  top: 250px;
+  /*display: none;*/
+  width: 300px;
+  z-index: 30;
+  background: #ffffff;
+  padding: 8px;
+  border: 1px solid #8c8c8c;
+  border-radius: 3px;
+}
+
+.copyContainer label {
+  display: block;
+  font-weight: bold;
+}
+
+.copyContainer select {
+  display: inline-block;
+  margin-bottom: 4px;
+}
+
+.copyContainer .boards {
+  width: 100%;
+}
+
+.copyContainer .lists {
+  width: 65%;
+  margin-right: 2%
+}
+
+.copyContainer .positions {
+  width: 33%;
+}
+
+.copyContainer h2 {
+  text-align: center;
+  padding: 2px 0 10px;
+  border-bottom: 1px solid #d6dadc;
+  color: #8c8c8c;
+  font-weight: normal;
+  font-size: 1em;
+  margin-bottom: 8px;
+}
+
+.card_modal .actions .subscribe.true {
+  background: #61BD4F url('/images/check-mark.png') 75% 40% no-repeat;
+  background-size: 16px;
+}

@@ -4,3 +4,4 @@ still unsure when it's best to use Express - is it needed for SPA?
 Trello logo - couldn't get transparent text
 
 
+Where does res.json get its data from in Express?

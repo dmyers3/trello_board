@@ -1,0 +1,13 @@
+<div class="comment_container">
+  <p>{{content}}</p>
+  <a href="#">{{date}}</a>
+  <a class="edit_comment" href="#">Edit</a>
+  <a class="delete" href="#">Delete</a>
+</div>
+<div class="edit_comment_popup">
+  <form class="edit_comment" method="post" action="/comments/:id">
+    <textarea></textarea>
+    <button type="submit" class='btn'>Save</button>
+    <span class="x_close comment">X</span>
+  </form>
+</div>

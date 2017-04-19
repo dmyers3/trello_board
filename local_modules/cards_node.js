@@ -22,26 +22,20 @@ var Cards = {
     var cards = cardsData.data;
     var card = _(cards).findWhere( {id: id});
     for (var key in cardData) {
-      if (cardData[key] === '') {
+      if (cardData[key] === '' || key === 'comments') {
         delete card[key]
       } else {
         card[key] = cardData[key];
       }
     }
-    
-    // card.title = cardData.title;
-    // album.artist = albumData.artist;
-    // album.date = albumData.date;
-    // album.price = albumData.price;
-    // album.cover = albumData.cover;
     fs.writeFileSync(filePath, JSON.stringify(cardsData), "utf8");
   },
-  delete: function(albumData) {
-    var id = albumData.id;
-    var albumsData = JSON.parse(fs.readFileSync(filePath, "utf8"));
-    var albums = _(Albums.get()).reject( {id : id});
-    albumsData.data = albums;
-    
+  delete: function(id) {
+    var idx = parseInt(id);
+    var cardsData = JSON.parse(fs.readFileSync(filePath, "utf8"));
+    var cards = _(Cards.get()).reject( {id: idx});
+    cardsData.data = cards;
+    fs.writeFileSync(filePath, JSON.stringify(cardsData), "utf8");
   },
   getLastID: function() {
     return JSON.parse(fs.readFileSync(filePath, "utf8")).last_id;
