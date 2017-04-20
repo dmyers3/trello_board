@@ -3,7 +3,7 @@
   <input type="text" placeholder="Search labels..." />
   <ul>
     {{#each labels}}
-    <li data-id="{{id}}" class="label {{color}}">{{title}}<span class="selected"><img src="images/check-mark.png" alt="selected" /></span></li>
+    <li data-id="{{id}}" class="label {{color}}">{{title}}<span class="selected"><img class="{{selected}}" src="images/check-mark.png" alt="selected" /></span></li>
     {{/each}}
   </ul>
   <a href="#">Create a new label</a>

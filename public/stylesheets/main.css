@@ -613,27 +613,27 @@ h3 {
   border-radius: 3px;
 }
 
-.label.yellow {
+.label.yellow, .label.min.id1 {
   background: #F2D600;
 }
 
-.label.green {
+.label.green, .label.min.id0 {
   background: #61BD4F;
 }
 
-.label.orange {
+.label.orange, .label.min.id2 {
   background: #FFAB4A;
 }
 
-.label.red {
+.label.red, .label.min.id3 {
   background: #EB5A46;
 }
 
-.label.purple {
+.label.purple, .label.min.id4 {
   background: #C377E0;
 }
 
-.label.blue {
+.label.blue, .label.min.id5 {
   background: #0079BF;
 }
 

@@ -10,6 +10,14 @@ var CardView = Backbone.View.extend({
   modalPopup: function(e) {
     e.preventDefault();
     new CardModal({model: this.model})
+    var cardTitle = this.model.get('title');
+    var cardId = this.model.get('id');
+    cardTitle = cardTitle.split(' ').map(function(word) {
+      return word.toLowerCase();
+    }).join('-');
+    
+    router.navigate(cardId + '-' + cardTitle);
+    
   },
   initialize: function() {
     this.render();
@@ -17,6 +25,7 @@ var CardView = Backbone.View.extend({
     this.model.setComments(App.comments);
     
     this.listenTo(this.model, 'change', this.render);
+    this.listenTo(this.model, 'sync', this.render);
     this.listenTo(this.model, 'destroy', this.remove);
   }
 });

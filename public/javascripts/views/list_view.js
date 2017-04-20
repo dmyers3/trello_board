@@ -55,6 +55,7 @@ var ListView = Backbone.View.extend({
       var newCard = new Card({title: title, listId: this.model.get('id')});
       // Adds newCard to Lists's Card Collection:
       this.model.get('cards').create(newCard);
+      // console.log(this.model.get('cards'));
       this.$('.add_card.action textarea').val('');
       
       this.cardsView.renderCard(newCard);
@@ -74,6 +75,7 @@ var ListView = Backbone.View.extend({
     
     var newCard = new Card({title: title, listId: this.model.get('id')});
     this.model.get('cards').create(newCard);
+    
     
     this.cardsView.renderCard(newCard);
   },

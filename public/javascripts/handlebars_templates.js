@@ -43,7 +43,7 @@ this["JST"]["card"] = Handlebars.template({"1":function(container,depth0,helpers
     + ((stack1 = helpers.each.call(depth0 != null ? depth0 : {},(depth0 != null ? depth0.labels : depth0),{"name":"each","hash":{},"fn":container.program(2, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "</div>";
 },"2":function(container,depth0,helpers,partials,data) {
-    return "<div class=\"label min "
+    return "<div class=\"label min id"
     + container.escapeExpression(container.lambda(depth0, depth0))
     + "\"></div>";
 },"4":function(container,depth0,helpers,partials,data) {
@@ -124,7 +124,9 @@ this["JST"]["labels"] = Handlebars.template({"1":function(container,depth0,helpe
     + alias4(((helper = (helper = helpers.color || (depth0 != null ? depth0.color : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"color","hash":{},"data":data}) : helper)))
     + "\">"
     + alias4(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"title","hash":{},"data":data}) : helper)))
-    + "<span class=\"selected\"><img src=\"images/check-mark.png\" alt=\"selected\" /></span></li>";
+    + "<span class=\"selected\"><img class=\""
+    + alias4(((helper = (helper = helpers.selected || (depth0 != null ? depth0.selected : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"selected","hash":{},"data":data}) : helper)))
+    + "\" src=\"images/check-mark.png\" alt=\"selected\" /></span></li>";
 },"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1;
 
