@@ -25,9 +25,15 @@ this["JST"]["card_modal"] = Handlebars.template({"1":function(container,depth0,h
 },"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1, helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
 
-  return "<a class=\"close\" href=\"#\">Close Modal</a><div class=\"card_modal\"><h2>"
+  return "<a class=\"close\" href=\"#\">Close Modal</a><div class=\"card_modal\"><h2 class=\"title\">"
     + alias4(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"title","hash":{},"data":data}) : helper)))
-    + "</h2><p>in list <a href=\"#\">List Placeholder</a></p><div class=\"main_container\"><article>"
+    + "</h2><form class=\"change_card_title\" method=\"post\" action=\"/cards/"
+    + alias4(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"id","hash":{},"data":data}) : helper)))
+    + "\"><input type=\"text\" value=\""
+    + alias4(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"title","hash":{},"data":data}) : helper)))
+    + "\" /></form><p>in list <a href=\"#\">"
+    + alias4((helpers.listTitle || (depth0 && depth0.listTitle) || alias2).call(alias1,(depth0 != null ? depth0.listId : depth0),{"name":"listTitle","hash":{},"data":data}))
+    + "</a></p><div class=\"main_container\"><article>"
     + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.due_date : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "<div class=\"edit_description container\">"
     + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.description : depth0),{"name":"if","hash":{},"fn":container.program(3, data, 0),"inverse":container.program(5, data, 0),"data":data})) != null ? stack1 : "")

@@ -1,7 +1,10 @@
 <a class="close" href="#">Close Modal</a>
 <div class="card_modal">
-  <h2>{{title}}</h2>
-  <p>in list <a href="#">List Placeholder</a></p>
+  <h2 class="title">{{title}}</h2>
+  <form class="change_card_title" method="post" action="/cards/{{id}}">
+    <input type="text" value="{{title}}" />
+  </form>
+  <p>in list <a href="#">{{listTitle listId}}</a></p>
   <div class="main_container">
     <article>
       {{#if due_date}}

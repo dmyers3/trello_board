@@ -1,7 +1,8 @@
-var CardModal = Backbone.View.extend({
+var CardModalView = Backbone.View.extend({
   className: 'modal_container',
   template: App.templates.card_modal,
   events: {
+    "click h2.title": "showEditTitle",
     "click .close": "removeModal",
     "click a.edit": "showEditDescription",
     "click a.due_date": "showEditDueDate",
@@ -10,10 +11,34 @@ var CardModal = Backbone.View.extend({
     "click .actions .archive": "deleteCard",
     "click .actions .copy": "copyCard",
     "click .actions .subscribe": "toggleSubscribed",
+    "submit form.change_card_title": "editCardTitle",
     "submit form.edit_description": "editDescription",
     "submit form.change_due_date": "editDueDate",
     "submit form.submit_comment": "submitComment",
     "reset form.change_due_date": "removeDueDate",
+  },
+  showEditTitle: function(e) {
+    e.preventDefault();
+    this.$('h2.title').hide();
+    this.$('.change_card_title').show()
+    this.$('.change_card_title input').focus();
+    this.$('.card_modal').on('click', this.hideChangeTitle.bind(this));
+  },
+  hideChangeTitle: function(e) {
+    e.preventDefault();
+    if (!e.target.closest('.change_card_title')) {
+      this.$('.change_card_title').hide();
+      this.$('h2.title').show();
+      this.$('.card_modal').off('click');
+    }
+  },
+  editCardTitle: function(e) {
+    e.preventDefault();
+    var title = this.$('.change_card_title input').val();
+    this.model.set('title', title);
+    this.model.save();
+    this.$('.change_card_title').hide();
+    this.$('h2.title').show().html(title);
   },
   submitComment: function(e) {
     e.preventDefault();

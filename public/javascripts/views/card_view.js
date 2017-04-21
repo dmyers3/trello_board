@@ -9,7 +9,9 @@ var CardView = Backbone.View.extend({
   },
   modalPopup: function(e) {
     e.preventDefault();
-    new CardModal({model: this.model})
+    var list = $(e.target.closest('#lists > li'));
+    var listTitle = list.find('h2').html();
+    new CardModalView({model: this.model, listTitle: listTitle});
     var cardTitle = this.model.get('title');
     var cardId = this.model.get('id');
     cardTitle = cardTitle.split(' ').map(function(word) {
@@ -24,8 +26,7 @@ var CardView = Backbone.View.extend({
     
     this.model.setComments(App.comments);
     
-    this.listenTo(this.model, 'change', this.render);
-    this.listenTo(this.model, 'sync', this.render);
+    this.listenTo(this.model, 'change sync', this.render);
     this.listenTo(this.model, 'destroy', this.remove);
   }
 });

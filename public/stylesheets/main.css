@@ -812,3 +812,19 @@ h3 {
   background: #61BD4F url('/images/check-mark.png') 75% 40% no-repeat;
   background-size: 16px;
 }
+
+
+.change_card_title {
+  display: none;
+}
+
+.change_card_title input {
+  font-size: 1.2em;
+  width: 100%;
+  border-radius: 3px;
+  padding: 4px;
+  box-sizing: border-box;
+  border: none;
+  font-weight: bold;
+  color: #4d4d4d;
+}

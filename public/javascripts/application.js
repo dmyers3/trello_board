@@ -51,3 +51,9 @@ var App = {
   }
 };
 
+Handlebars.registerHelper('listTitle', function(listId) {
+  var matchingList = App.lists.findWhere({id: listId});
+  console.log(matchingList);
+  return matchingList.get('title');
+});
+
