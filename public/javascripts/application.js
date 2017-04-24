@@ -37,6 +37,16 @@ var App = {
       // then use specific CardViews to listen for trigger and adjust positions accordingly
     })
   },
+  setupSearch: function() {
+    $('header input').on('focus', this.createSearchView.bind(this));
+  },
+  createSearchView: function() {
+    if (this.searchView) {
+      this.searchView.render();
+    } else {
+      this.searchView = new searchView({collection: this.cards, className: 'search_container'});
+    }
+  },
   copyCard: function(copyArray) {
     var listId = copyArray.filter(function(object) {
       return object.name === 'list';
@@ -44,16 +54,46 @@ var App = {
     console.log(this);
     this.trigger('copy' + listId, copyArray);
   },
+  turnOffDocumentListener: function() {
+    if (this.openPopups === 0) {
+      $(document).off('click');
+    }
+  },
+  setupPopupCount: function() {
+    this.openPopups = 0;
+  },
+  navigateHome: function() {
+    router.navigate('');
+  },
+  setupNotifications: function() {
+    this.notifications = new Notifications();
+    $('header .notifications').on('click', this.createNotificationView.bind(this));
+  },
+  createNotificationView: function() {
+    if (this.notificationsView) {
+      this.notificationsView.render();
+    } else {
+      this.notificationsView = new NotificationsView({collection: this.notifications, className: 'notification_container'});
+    }
+  },
   init: function() {
     this.initializeBoard();
+    this.setupSearch();
     this.setupDragAndDrop();
     this.listenForDropEvents();
+    this.setupPopupCount();
+    this.setupNotifications();
   }
 };
 
 Handlebars.registerHelper('listTitle', function(listId) {
   var matchingList = App.lists.findWhere({id: listId});
-  console.log(matchingList);
   return matchingList.get('title');
+});
+
+// Not really needed with just one board, but can be modified to find board based on listId of specific Card
+Handlebars.registerHelper('boardTitle', function(listId) {
+  var matchingList = App.lists.findWhere({id: listId});
+  return App.board.get('title');
 });
 

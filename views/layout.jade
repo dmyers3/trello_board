@@ -16,6 +16,8 @@ html(lang="en-US")
       input(type="search")
       a(class="logo" href="/")
         img(src="images/header-logo.png" alt="company_logo")
+      a(class="notifications" href="#")
+        img(src="images/notification_bell.png" alt="notifications")
     main
       block content
     
@@ -25,10 +27,10 @@ html(lang="en-US")
     +javascript_include_tag("handlebars_templates")
     +javascript_include_tag("application")
     +javascript_include_tag("router")
-    +javascript_include_tag("models/board", "models/list", "models/card", "models/comment", "models/label")
-    +javascript_include_tag("collections/lists", "collections/cards", "collections/comments", "collections/labels")
-    +javascript_include_tag("views/board_view", "views/lists_view", "views/list_view", "views/cards_view", "views/card_view")
-    +javascript_include_tag("views/copy", "views/card_modal", "views/labels_view", "views/comment_view", "views/comments_view")
+    +javascript_include_tag("models/board", "models/list", "models/card", "models/comment", "models/label", "models/notification")
+    +javascript_include_tag("collections/lists", "collections/cards", "collections/comments", "collections/labels", "collections/notifications")
+    +javascript_include_tag("views/board_view", "views/lists_view", "views/list_view", "views/cards_view", "views/card_view", "views/notifications_view")
+    +javascript_include_tag("views/copy", "views/card_modal", "views/labels_view", "views/comment_view", "views/comments_view", "views/search")
     script(type="text/javascript").
       App.board = new Board(!{JSON.stringify(board)});
       App.lists = new Lists(!{JSON.stringify(lists)});

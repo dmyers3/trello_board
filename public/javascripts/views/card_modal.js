@@ -3,6 +3,7 @@ var CardModalView = Backbone.View.extend({
   template: App.templates.card_modal,
   events: {
     "click h2.title": "showEditTitle",
+    "click h2 .x_close": "removeModal",
     "click .close": "removeModal",
     "click a.edit": "showEditDescription",
     "click a.due_date": "showEditDueDate",
@@ -47,6 +48,9 @@ var CardModalView = Backbone.View.extend({
     this.model.get('comments').create(newComment);
     new CommentView({model: newComment, tagName: 'li'});
     $('.submit_comment textarea').val('');
+    if (this.model.get('subscribed')) {
+      App.notifications.add({title: this.model.get('title'), message: "New Comment: " + newComment.get('content'), timestamp: date})
+    }
   },
   toggleSubscribed: function(e) {
     e.preventDefault();
@@ -111,7 +115,7 @@ var CardModalView = Backbone.View.extend({
   },
   refresh: function() {
     this.remove();
-    new CardModal({model: this.model});
+    new CardModalView({model: this.model});
   },
   editDescription: function(e) {
     e.preventDefault();
@@ -123,6 +127,7 @@ var CardModalView = Backbone.View.extend({
   removeModal: function(e) {
     e.preventDefault();
     this.remove();
+    App.navigateHome();
   },
   initialize: function() {
     this.render();

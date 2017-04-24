@@ -1,0 +1,10 @@
+<h2>Cards</h2>
+<ul class="search_results">
+  {{#each matchingCards}}
+    <li>
+      <a data-id={{id}} href="#">{{title}}</a>
+      <p>in <span class="list_title">{{listTitle listId}}</span> on <span class="board_title">{{boardTitle listId}}</span></p>
+    </li>
+  {{/each}}
+</ul>
+<p>Type to search for match in card titles and descriptions</p>

@@ -1,7 +1,7 @@
 <div class="title_container">
   <h1><span class="title">{{title}}</span></h1>
   <div class="title_popup">
-    <h2>Rename Board</h2>
+    <h2>Rename Board<span class="x_close">X</span></h2>
     <form method="post" action="/board" class="rename_board">
       <label>Name</label>
       <input type="text" />
@@ -21,7 +21,8 @@
     <div class="add_list action">
       <form method="post" action="/lists" class="add_list">
         <input name="list_title" type="text" placeholder="Add a list..." />
-        <button class="btn add_list" type="submit">Save</button>
+        <button class="btn" type="submit">Save</button>
+        <span class="x_close">X</span>
       </form>
     </div>
   </div>

@@ -36,21 +36,6 @@ LabelsView = Backbone.View.extend({
       return a > b ? 1 : -1;
     });
     this.model.set('labels', currentCardLabels);
-    // this.addCheckMarks();
-    
-    // var clickedLabel = _.findWhere(this.model.get('labels').toJSON(), {id: labelId});
-    // var labels = this.model.get('labels').toJSON();
-    
-    // if (!clickedLabel.selected) {
-    //   clickedLabel.selected = 'selected';
-    // } else {
-    //   clickedLabel.selected = false;
-    // }
-    
-    // labels[labelId] = clickedLabel;
-    // this.model.set('labels', new Labels(labels));
-    
-    console.log(this.model.get('labels'));
     this.model.save();
     
   },

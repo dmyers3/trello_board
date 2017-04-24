@@ -1,1 +1,1 @@
-{"last_id":3,"data":[{"title":"First Card","listId":0,"id":0},{"title":"Another Card","listId":1,"id":1},{"title":"Super Card","listId":0,"id":2}]}
+{"last_id":3,"data":[{"title":"First Card","listId":0,"id":0,"due_date":"08/17/2017 9:00am","labels":[0]},{"title":"Another Card","listId":1,"id":1,"labels":[0,4]}]}

@@ -3,6 +3,7 @@ var ListView = Backbone.View.extend({
   events: {
     'click .add_card.display': 'toggleAddCardDisplay',
     "click h2.list_title": "displayChangeTitleForm",
+    "click .add_card .x_close": "closeAddCard",
     "submit .list_title": "changeTitle"
   },
   render: function() {
@@ -27,7 +28,7 @@ var ListView = Backbone.View.extend({
     if (!e.target.closest('.list_title')) {
       this.$('h2.list_title').show().html(this.model.get('title'));
       this.$('form.list_title').hide();
-      $(document).off('click');
+      $(document).off('click', this.hideChangeTitleForm);
     }
   },
   toggleAddCardDisplay: function(e) {
@@ -42,11 +43,15 @@ var ListView = Backbone.View.extend({
   },
   hideAddCardPopup: function(e) {
     if (!e.target.closest('.add_card.container')) {
-      this.$('.add_card.action').hide();
-      this.$('.add_card.display').slideDown(100);
-      $(document).off('click');
-      this.$('.add_card button').off('click');
+      this.closeAddCard(e);
     }
+  },
+  closeAddCard: function(e) {
+    e.preventDefault();
+    this.$('.add_card.action').hide();
+    this.$('.add_card.display').slideDown(100);
+    $(document).off('click', this.hideAddCardPopup);
+    this.$('.add_card button').off('click');
   },
   addCard: function(e) {
     e.preventDefault();

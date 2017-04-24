@@ -28,5 +28,6 @@ var CardView = Backbone.View.extend({
     
     this.listenTo(this.model, 'change sync', this.render);
     this.listenTo(this.model, 'destroy', this.remove);
+    this.listenTo(this.model, 'modalPopup', this.modalPopup);
   }
 });
