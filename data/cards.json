@@ -1,1 +1,1 @@
-{"last_id":3,"data":[{"title":"First Card","listId":0,"id":0,"due_date":"08/17/2017 9:00am","labels":[0]},{"title":"Another Card","listId":1,"id":1,"labels":[0,4]}]}
+{"last_id":4,"data":[{"title":"First Card","listId":0,"position":0,"id":0,"due_date":"04/28/2017","due_time":"2:30am","description":"New Description","labels":[0,4]},{"title":"Second Card","listId":0,"position":1,"id":1},{"title":"Third Card","listId":1,"position":0,"id":2},{"title":"Fourth Card","listId":2,"position":0,"id":3}]}

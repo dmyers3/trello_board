@@ -18,13 +18,17 @@ var Comments = {
   },
   update: function(commentData) {
     var id = commentData.id;
-    var comment = _(Comments.get()).findWhere( {id: id});
-    album.title = albumData.title;
-    album.artist = albumData.artist;
-    album.date = albumData.date;
-    album.price = albumData.price;
-    album.cover = albumData.cover;
-    fs.writeFileSync(filePath, JSON.stringify(albumsData), "utf8");
+    var commentsData = JSON.parse(fs.readFileSync(filePath, "utf8"));
+    var comments = commentsData.data;
+    var comment = _(comments).findWhere( {id: id});
+    for (var key in commentData) {
+      if (commentData[key] === '') {
+        delete comment[key]
+      } else {
+        comment[key] = commentData[key];
+      }
+    }
+    fs.writeFileSync(filePath, JSON.stringify(commentsData), "utf8");
   },
   delete: function(id) {
     var idx = parseInt(id);

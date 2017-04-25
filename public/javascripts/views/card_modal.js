@@ -45,6 +45,7 @@ var CardModalView = Backbone.View.extend({
     e.preventDefault();
     var date = new Date();
     var newComment = new Comment({cardId: this.model.get('id'), content: $('.submit_comment textarea').val(), date: date});
+    App.comments.add(newComment);
     this.model.get('comments').create(newComment);
     new CommentView({model: newComment, tagName: 'li'});
     $('.submit_comment textarea').val('');
@@ -102,8 +103,10 @@ var CardModalView = Backbone.View.extend({
   },
   editDueDate: function(e) {
     e.preventDefault();
-    var dueDate = this.$('#date_picker').val() + ' ' + this.$('#time_picker').val();
+    var dueDate = this.$('#date_picker').val();
+    var dueTime = this.$('#time_picker').val();
     this.model.set('due_date', dueDate);
+    this.model.set('due_time', dueTime);
     this.model.save();
     this.refresh();
   },
@@ -129,8 +132,12 @@ var CardModalView = Backbone.View.extend({
     this.remove();
     App.navigateHome();
   },
+  setUpCloseListener: function() {
+    this.listenTo(App, 'removeModal', this.remove);
+  },
   initialize: function() {
     this.render();
+    this.setUpCloseListener();
     
     this.commentsView = new CommentsView({
       el: this.$('ul#comments'),

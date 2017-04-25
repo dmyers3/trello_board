@@ -1,1 +1,1 @@
-{"last_id":1,"data":{"title":"Sample Board","id":0, "labels": [{"color": "green", "id": 0}, {"color": "yellow", "id": 1}, {"color": "orange", "id": 2}, {"color": "red", "id": 3}, {"color": "purple", "id": 4}, {"color": "blue", "id": 5}]}}
+{"last_id":1,"data":{"title":"Sample Board","id":0,"labels":[{"color":"green","id":0,"title":"Green Label"},{"color":"yellow","id":1,"title":"Yellow Label"},{"color":"orange","id":2},{"color":"red","id":3},{"color":"purple","id":4},{"color":"blue","id":5}]}}

@@ -21,20 +21,21 @@ var App = {
   },
   listenForDropEvents: function() {
     var self = this;
+    this.listsDrake.off();
     this.listsDrake.on('drop', function(el, target, source, sibling) {
       self.board.get('lists').reorderDataIds();
     });
     
+    this.cardsDrake.off();
     this.cardsDrake.on('drop', function(el, target, source, sibling) {
-      // console.log(el);
-      // console.log(target);
-      // console.log(source);
-      // console.log(sibling);
-      _.extend(this, Backbone.Events);
-      this.trigger('cardDrop');
+      sourceListId = parseInt($(source).attr('data-list_id'));
+      sourceList = self.lists.findWhere({id: sourceListId});
+      sourceList.trigger('reorder');
       
-      // trigger for both target ID and source ID
-      // then use specific CardViews to listen for trigger and adjust positions accordingly
+      targetListId = parseInt($(target).attr('data-list_id'));
+      targetList = self.lists.findWhere({id: targetListId});
+      targetList.trigger('reorder');
+      
     })
   },
   setupSearch: function() {
@@ -59,9 +60,6 @@ var App = {
       $(document).off('click');
     }
   },
-  setupPopupCount: function() {
-    this.openPopups = 0;
-  },
   navigateHome: function() {
     router.navigate('');
   },
@@ -76,12 +74,16 @@ var App = {
       this.notificationsView = new NotificationsView({collection: this.notifications, className: 'notification_container'});
     }
   },
+  refresh: function() {
+    this.boardView = new BoardView({model: this.board, el: 'main'});
+    this.setupDragAndDrop();
+    this.listenForDropEvents();
+  },
   init: function() {
     this.initializeBoard();
     this.setupSearch();
     this.setupDragAndDrop();
     this.listenForDropEvents();
-    this.setupPopupCount();
     this.setupNotifications();
   }
 };

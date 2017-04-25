@@ -10,11 +10,11 @@
   <div class="subscribed"></div>
 {{/if}}
 {{#if due_date}}
-  <div class="due_date">{{due_date}}</div>
+  <div class="due_date" title="Due Date"><img src="images/clock.png" alt="Due"/> {{due_date}}</div>
 {{/if}}
 {{#if description}}
-  <div class="description"></div>
+  <div class="description" title="This card has a description"><img src="images/description.png" alt="Description"/></div>
 {{/if}}
-{{#if comments}}
-  <div class="comments">{{total}}</div>
+{{#if comments.length}}
+  <div class="comments" title="Comments"><img src="images/comment.png" alt="Comments"/> {{comments.length}}</div>
 {{/if}}

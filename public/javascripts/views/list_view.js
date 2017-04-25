@@ -57,10 +57,11 @@ var ListView = Backbone.View.extend({
     e.preventDefault();
     var title = this.$('.add_card.action textarea').val();
     if (title.length > 0) {
-      var newCard = new Card({title: title, listId: this.model.get('id')});
+      var prevNumOfCards = this.$('.cards > li').length;
+      var newCard = new Card({title: title, listId: this.model.get('id'), position: prevNumOfCards});
       // Adds newCard to Lists's Card Collection:
+      App.cards.add(newCard);
       this.model.get('cards').create(newCard);
-      // console.log(this.model.get('cards'));
       this.$('.add_card.action textarea').val('');
       
       this.cardsView.renderCard(newCard);
@@ -84,6 +85,21 @@ var ListView = Backbone.View.extend({
     
     this.cardsView.renderCard(newCard);
   },
+  reorderPositions: function() {
+    var self = this;
+     
+    this.$('.cards > li').each(function(index, card) {
+      var cardId = parseInt(card.getAttribute('data-id'));
+      var matchingCard = App.cards.findWhere({id: cardId});
+      var listId = parseInt(self.$('.cards').attr('data-list_id'));
+      console.log(listId);
+      matchingCard.set('listId', listId);
+      matchingCard.set('position', index);
+      matchingCard.save();
+    });
+    
+    App.cards.sort()
+  },
   initialize: function() {
     this.render();
   
@@ -95,7 +111,6 @@ var ListView = Backbone.View.extend({
     });
     
     this.listenTo(App, 'copy' + this.model.get('id'), this.copyCard);
-    // this.listenTo(this.model, 'change', this.render);
-    // this.listenTo(App.board.get('lists'), 'reorderLists', this.editListPositions);
+    this.listenTo(this.model, 'reorder', this.reorderPositions);
   }
 });

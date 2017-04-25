@@ -9,9 +9,7 @@ var CardView = Backbone.View.extend({
   },
   modalPopup: function(e) {
     e.preventDefault();
-    var list = $(e.target.closest('#lists > li'));
-    var listTitle = list.find('h2').html();
-    new CardModalView({model: this.model, listTitle: listTitle});
+    new CardModalView({model: this.model});
     var cardTitle = this.model.get('title');
     var cardId = this.model.get('id');
     cardTitle = cardTitle.split(' ').map(function(word) {
@@ -22,9 +20,8 @@ var CardView = Backbone.View.extend({
     
   },
   initialize: function() {
-    this.render();
-    
     this.model.setComments(App.comments);
+    this.render();
     
     this.listenTo(this.model, 'change sync', this.render);
     this.listenTo(this.model, 'destroy', this.remove);

@@ -9,7 +9,10 @@ CardsView = Backbone.View.extend({
   renderCard: function(card) {
     this.$el.append(new CardView({
       model: card,
-      tagName: 'li'
+      tagName: 'li',
+      attributes: {
+        'data-id': card.get('id')
+      }
     }).el);
   }
 });

@@ -1,13 +1,20 @@
 // don't need Router Constructor so use IIFE
 var router = new (Backbone.Router.extend({
   routes: {
-    "albums/new": App.newAlbum
-    // can't use "/" for index route because routes already assumes "/". also need
-    // to account for instances where there is no ending forward slash (because index
-    // can have slash or no slash)
+    ":cardString": "createCardModal"
+  },
+  createCardModal: function(cardString) {
+    var cardData = cardString.split('-');
+    var cardId = parseInt(cardData[0]);
+    var cardModel = App.cards.findWhere({id: cardId});
+    new CardModalView({model: cardModel});
   },
   index: function() { 
-    // App.indexView(); 
+    if (App.boardView) {
+      App.refresh();
+      // App.boardView = new BoardView({model: App.board, el: 'main'});
+      App.trigger('removeModal');
+    }
     // router.navigate(App.board.get('title'));
   },
   initialize: function() {

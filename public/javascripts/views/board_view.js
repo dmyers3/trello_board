@@ -46,6 +46,7 @@ var BoardView = Backbone.View.extend({
       var prevNumOfLists = $('#lists > li').length;
       var newList = new List({title: title, boardId: this.model.get('id'), position: prevNumOfLists});
       // Adds newList to Board's List Collection:
+      App.lists.add(newList);
       var self = this;
       newList = this.model.get('lists').create(newList, {
         success: function() {

@@ -659,7 +659,7 @@ h3 {
 }
 
 .card .title {
-  margin-bottom: 4px;
+  margin-bottom: 8px;
 }
 
 .labels:after {
@@ -681,27 +681,27 @@ h3 {
   border-radius: 3px;
 }
 
-.label.yellow, .label.min.id1 {
+.label.yellow, .label.min.id1, .labels_main input.yellow {
   background: #F2D600;
 }
 
-.label.green, .label.min.id0 {
+.label.green, .label.min.id0, .labels_main input.green {
   background: #61BD4F;
 }
 
-.label.orange, .label.min.id2 {
+.label.orange, .label.min.id2, .labels_main input.orange {
   background: #FFAB4A;
 }
 
-.label.red, .label.min.id3 {
+.label.red, .label.min.id3, .labels_main input.red {
   background: #EB5A46;
 }
 
-.label.purple, .label.min.id4 {
+.label.purple, .label.min.id4, .labels_main input.purple {
   background: #C377E0;
 }
 
-.label.blue, .label.min.id5 {
+.label.blue, .label.min.id5, .labels_main input.blue {
   background: #0079BF;
 }
 
@@ -765,6 +765,7 @@ h3 {
   box-sizing: border-box;
   border-radius: 3px;
   cursor: pointer;
+  height: 32px;
 }
 
 .labels_main li .info {
@@ -772,6 +773,8 @@ h3 {
   width: 83%;
   box-sizing: border-box;
   border-radius: 3px;
+  height: 100%;
+  color: #ffffff;
 }
 
 .labels_main li .edit {
@@ -779,7 +782,6 @@ h3 {
   width: 15%;
   margin-left: 1%;
   box-sizing: border-box;
-  height: 32px;
   border-radius: 3px;
 }
 
@@ -791,12 +793,20 @@ h3 {
   
 }
 
-.labels_main .selected img {
+.labels_main li:after {
+  display: block;
+  content: "";
+  clear: both;
+}
+
+.labels_main .info img {
   display: none;
 }
 
-.labels_main .selected img.selected {
+.labels_main .info img.selected {
   display: inline-block;
+  width: 12px;
+  float: right;
 }
 
 .card_modal .labels_main > a {
@@ -811,10 +821,10 @@ h3 {
   color: #4d4d4d;
 }
 
-.labels_main .selected img {
-  width: 12px;
-  float: right;
-}
+/*.labels_main .info img {*/
+/*  width: 12px;*/
+/*  float: right;*/
+/*}*/
 
 .labels_main li span {
   width: 100%;
@@ -957,6 +967,10 @@ h3 {
   color: #4d4d4d;
 }
 
+.x_close:hover {
+  color: #8d8d8d;
+}
+
 .notification_container {
   position: absolute;
   right: 0;
@@ -966,4 +980,39 @@ h3 {
   z-index: 10;
   border-radius: 3px;
   color: #4d4d4d;
+}
+
+.card img {
+  height: 12px;
+}
+
+.card .description img {
+  height: 16px;
+}
+
+.card .due_date, .card .comments, .card .description {
+  font-size: .9em;
+  color: #8c8c8c;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.labels_main form {
+  display: none;
+  width: 83%;
+}
+
+.labels_main form input {
+  margin: 0;
+  color: #ffffff;
+}
+
+.labels_main .remove_edit {
+  display: none;
+  width: 15%;
+}
+
+.labels_main .remove_edit a {
+  float: none;
+  margin: 0 0 0 1%;
 }

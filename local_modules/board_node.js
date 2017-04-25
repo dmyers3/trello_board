@@ -19,6 +19,7 @@ var Board = {
   update: function(boardData) {
     var board = JSON.parse(fs.readFileSync(filePath, "utf8"));
     board.data.title = boardData.title;
+    board.data.labels = boardData.labels;
     fs.writeFileSync(filePath, JSON.stringify(board), "utf8");
   },
   delete: function(albumData) {

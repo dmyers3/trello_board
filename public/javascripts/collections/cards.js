@@ -1,6 +1,6 @@
 var Cards = Backbone.Collection.extend({
   url: "/cards",
-  comparator: "listPosition",
+  comparator: "position",
   model: Card,
   numInList: function(listId) {
     return this.where({listId: listId}).length;

@@ -1,22 +1,26 @@
 <div class="labels_main">
   <h2>Labels<span class="x_close">X</span></h2>
-  <input type="text" placeholder="Search labels..." />
+  {{!--<input type="text" placeholder="Search labels..." />--}}
   <ul>
     {{#each labels}}
     <li data-id="{{id}}">
       <span class="info label {{color}}">
         {{title}}
-        <span class="selected">
           <img class="{{selected}}" src="images/check-mark.png" alt="selected" />
-        </span>
       </span>
+      <form action="#" method="post" class="label_title">
+        <input class="label_name {{color}}" />
+      </form>
       <span class="edit">
          <a class="edit_label" href="#"><img src="images/edit_pencil.png" /></a>
+      </span>
+      <span class="remove_edit">
+        <a href="#" class="x_close">X</a>
       </span>
     </li>
     {{/each}}
   </ul>
-  <a href="#">Create a new label</a>
+  {{!--<a href="#">Create a new label</a>--}}
 </div>
 <div class="labels_change">
   
