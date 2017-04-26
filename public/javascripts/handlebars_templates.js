@@ -150,7 +150,7 @@ this["JST"]["list"] = Handlebars.template({"compiler":[7,">= 4.0.0"],"main":func
 
   return "<h2 class=\"list_title\">"
     + alias4(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"title","hash":{},"data":data}) : helper)))
-    + "</h2><form class=\"list_title\" method=\"post\" action=\"/lists/:id\"><input type=\"text\" /></form><ul class=\"cards\" data-list_id="
+    + "<img class=\"trash\" src=\"images/trash.png\" alt=\"delete\" /></h2><form class=\"list_title\" method=\"post\" action=\"/lists/:id\"><input type=\"text\" /></form><ul class=\"cards\" data-list_id="
     + alias4(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"id","hash":{},"data":data}) : helper)))
     + "></ul><div class=\"add_card container\"><div class=\"add_card display\"><a class=\"add_card\" href=\"#\">Add a card...</a></div><div class=\"add_card action\"><form method=\"post\" action=\"/lists\" class=\"add_card\"><textarea></textarea><button class=\"btn add_card\" type=\"submit\">Add</button><span class=\"x_close\">X</span></form></div></div>";
 },"useData":true});

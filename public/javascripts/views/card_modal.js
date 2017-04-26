@@ -70,9 +70,10 @@ var CardModalView = Backbone.View.extend({
     e.preventDefault();
     var confirm = window.confirm('Are you sure? This cannot be undone.');
     if (confirm === true) {
-      this.model.destroy();
+      this.model.delete();
+      this.removeModal(e);
     }
-    this.removeModal(e);
+    
   },
   copyCard: function(e) {
     e.preventDefault();

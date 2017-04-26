@@ -38,12 +38,12 @@ var Lists = {
     fs.writeFileSync(filePath, JSON.stringify(oldListsData), "utf8");
     
   },
-  delete: function(albumData) {
-    var id = albumData.id;
-    var albumsData = JSON.parse(fs.readFileSync(filePath, "utf8"));
-    var albums = _(Albums.get()).reject( {id : id});
-    albumsData.data = albums;
-    
+  delete: function(id) {
+    var idx = parseInt(id);
+    var listsData = JSON.parse(fs.readFileSync(filePath, "utf8"));
+    var lists = _(Lists.get()).reject( {id: idx});
+    listsData.data = lists;
+    fs.writeFileSync(filePath, JSON.stringify(listsData), "utf8");
   },
   getLastID: function() {
     return JSON.parse(fs.readFileSync(filePath, "utf8")).last_id;

@@ -929,6 +929,13 @@ h3 {
   color: #ffffff;
 }
 
+.copyContainer select:hover option, .moveContainer select:hover option {
+  background: #ffffff;
+  color: #4d4d4d;
+}
+
+
+
 .copyContainer .boards, .moveContainer .boards {
   width: 100%;
 }
@@ -1036,4 +1043,15 @@ h3 {
 .labels_main .remove_edit a {
   float: none;
   margin: 0 0 0 1%;
+}
+
+.trash {
+  float: right;
+  height: 20px;
+  padding: 4px;
+  margin-top: -6px;
+}
+
+.trash:hover {
+  background: #8d8d8d;
 }

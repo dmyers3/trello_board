@@ -58,7 +58,6 @@ var App = {
     var listId = copyArray.filter(function(object) {
       return object.name === 'list';
     })[0].value;
-    console.log(this);
     this.trigger('copy' + listId, copyArray);
   },
   turnOffDocumentListener: function() {

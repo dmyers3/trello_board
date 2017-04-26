@@ -4,10 +4,18 @@ var ListView = Backbone.View.extend({
     'click .add_card.display': 'toggleAddCardDisplay',
     "click h2.list_title": "displayChangeTitleForm",
     "click .add_card .x_close": "closeAddCard",
+    "click .trash": "deleteList",
     "submit .list_title": "changeTitle"
   },
   render: function() {
     this.$el.html(this.template(this.model.toJSON()));
+  },
+  deleteList: function(e) {
+    e.preventDefault();
+    var confirm = window.confirm('Are you sure? This cannot be undone.');
+    if (confirm === true) {
+      this.model.delete();
+    }
   },
   changeTitle: function(e) {
     e.preventDefault();
@@ -75,15 +83,32 @@ var ListView = Backbone.View.extend({
     var title = copyArray.filter(function(object) {
       return object.name === 'title';
     })[0].value;
-    var position = copyArray.filter(function(object) {
+    var position = parseInt(copyArray.filter(function(object) {
       return object.name === 'position';
-    })[0].value;
+    })[0].value);
     
-    var newCard = new Card({title: title, listId: this.model.get('id')});
-    this.model.get('cards').create(newCard);
+    // Reorders other cards' positions in list
+    this.model.get('cards').each(function(card) {
+      if (card.get('position') >= position) {
+        card.set('position', card.get('position') + 1);
+        card.save();
+      }
+    })
+    
+    var newCard = new Card({title: title, listId: this.model.get('id'), position: position});
+    var self = this;
+    this.model.get('cards').create(newCard, {
+      success: function() {
+        self.model.get('cards').sort();
+        self.cardsView = new CardsView({
+          el: self.$('ul'),
+          collection: self.model.get('cards'),
+        });
+      }
+    });
     
     
-    this.cardsView.renderCard(newCard);
+    
   },
   reorderPositions: function() {
     var self = this;

@@ -21,4 +21,10 @@ module.exports = function(router) {
     Lists.updateAll(req.body);
     res.json({});
   });
+  
+  router.delete("/lists/:id", function(req, res, next) {
+    var id = req.params.id;
+    Lists.delete(id);
+    req.status(200).end();
+  });
 }
