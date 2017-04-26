@@ -30,7 +30,7 @@ html(lang="en-US")
     +javascript_include_tag("models/board", "models/list", "models/card", "models/comment", "models/label", "models/notification")
     +javascript_include_tag("collections/lists", "collections/cards", "collections/comments", "collections/labels", "collections/notifications")
     +javascript_include_tag("views/board_view", "views/lists_view", "views/list_view", "views/cards_view", "views/card_view", "views/notifications_view")
-    +javascript_include_tag("views/copy", "views/card_modal", "views/labels_view", "views/comment_view", "views/comments_view", "views/search")
+    +javascript_include_tag("views/copy", "views/card_modal", "views/labels_view", "views/comment_view", "views/comments_view", "views/search", "views/move")
     script(type="text/javascript").
       App.board = new Board(!{JSON.stringify(board)});
       App.lists = new Lists(!{JSON.stringify(lists)});

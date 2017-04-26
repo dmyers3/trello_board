@@ -5,8 +5,8 @@
     {{#each labels}}
     <li data-id="{{id}}">
       <span class="info label {{color}}">
-        {{title}}
-          <img class="{{selected}}" src="images/check-mark.png" alt="selected" />
+        <span class="label_title_container">{{title}}</span>
+        <img class="{{selected}}" src="images/check-mark.png" alt="selected" />
       </span>
       <form action="#" method="post" class="label_title">
         <input class="label_name {{color}}" />

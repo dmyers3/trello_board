@@ -6,7 +6,7 @@ LabelsView = Backbone.View.extend({
     'click h2 .x_close': "closePopup",
     "click .remove_edit .x_close": "hideEditLabel",
     "click .label": "toggleLabel",
-    "click .edit_label": "showEditLabel",
+    "click span.edit": "showEditLabel",
     "submit .label_title": "changeLabelTitle"
   },
   className: 'labels_popup',
@@ -35,9 +35,11 @@ LabelsView = Backbone.View.extend({
     var labelId = parseInt($(e.target).closest('li').attr('data-id'));
     var label = App.board.get('labels').get({id: labelId});
     label.set('title', title);
-    console.log(App.board.toJSON());
-    
     App.board.save();
+    this.hideEditLabel(e);
+    this.closePopup(e);
+    this.render();
+    this.delegateEvents();
   },
   addCheckMarks: function() {
     var currentCardLabels = this.model.get('labels') || [];

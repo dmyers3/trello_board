@@ -7,6 +7,11 @@ var App = {
     _.extend(this, Backbone.Events);
   },
   setupDragAndDrop: function() {
+    if (this.cardsDrake) {
+      this.cardsDrake.destroy();
+      this.listsDrake.destroy();
+    }
+    
     this.cardsDrake = dragula();
     var numCardContainers = $('.cards').length;
     this.listsDrake = dragula([$('#lists').get(0)], {
@@ -18,15 +23,16 @@ var App = {
     for (var i=0; i < numCardContainers; i += 1) {
       this.cardsDrake.containers.push($('.cards').get(i));
     }
+   
   },
   listenForDropEvents: function() {
     var self = this;
-    this.listsDrake.off();
+    
     this.listsDrake.on('drop', function(el, target, source, sibling) {
       self.board.get('lists').reorderDataIds();
     });
     
-    this.cardsDrake.off();
+    
     this.cardsDrake.on('drop', function(el, target, source, sibling) {
       sourceListId = parseInt($(source).attr('data-list_id'));
       sourceList = self.lists.findWhere({id: sourceListId});
@@ -67,12 +73,13 @@ var App = {
     this.notifications = new Notifications();
     $('header .notifications').on('click', this.createNotificationView.bind(this));
   },
-  createNotificationView: function() {
+  createNotificationView: function(e) {
     if (this.notificationsView) {
       this.notificationsView.render();
     } else {
       this.notificationsView = new NotificationsView({collection: this.notifications, className: 'notification_container'});
     }
+    e.stopPropagation();
   },
   refresh: function() {
     this.boardView = new BoardView({model: this.board, el: 'main'});

@@ -11,6 +11,7 @@ var CardModalView = Backbone.View.extend({
     "click .x_close.description": "hideEditDescription",
     "click .actions .archive": "deleteCard",
     "click .actions .copy": "copyCard",
+    "click .actions .move": "moveCard",
     "click .actions .subscribe": "toggleSubscribed",
     "submit form.change_card_title": "editCardTitle",
     "submit form.edit_description": "editDescription",
@@ -75,7 +76,11 @@ var CardModalView = Backbone.View.extend({
   },
   copyCard: function(e) {
     e.preventDefault();
-    new CopyView({model: this.model, className: 'copyContainer'})
+    new CopyView({model: this.model, className: 'copyContainer'});
+  },
+  moveCard: function(e) {
+    e.preventDefault();
+    new MoveView({model: this.model, className: 'moveContainer'});
   },
   showEditDescription: function(e) {
     e.preventDefault();
