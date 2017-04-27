@@ -21,4 +21,9 @@ module.exports = function(router) {
     res.status(200).end();
   });
   
+  router.put('/cards', function(req, res, next) {
+    Cards.updateAll(req.body);
+    res.json({});
+  });
+  
 }

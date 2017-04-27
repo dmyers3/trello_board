@@ -5,7 +5,7 @@ var CopyView = Backbone.View.extend({
   },
   events: {
     "click .x_close": "removeView",
-    "submit .copy": "copyCard",
+    "click .copy_btn": "copyCard",
     "change select.lists": "populatePositionsOnChange"
   },
   template: App.templates.copy,

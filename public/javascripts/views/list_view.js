@@ -69,10 +69,15 @@ var ListView = Backbone.View.extend({
       var newCard = new Card({title: title, listId: this.model.get('id'), position: prevNumOfCards});
       // Adds newCard to Lists's Card Collection:
       App.cards.add(newCard);
-      this.model.get('cards').create(newCard);
+      var self = this;
+      this.model.get('cards').create(newCard, {
+        success: function() {
+          self.cardsView.renderCard(newCard);
+        }
+      });
       this.$('.add_card.action textarea').val('');
       
-      this.cardsView.renderCard(newCard);
+      
     }
   },
   editListPositions: function() {
@@ -87,28 +92,24 @@ var ListView = Backbone.View.extend({
       return object.name === 'position';
     })[0].value);
     
-    // Reorders other cards' positions in list
-    this.model.get('cards').each(function(card) {
-      if (card.get('position') >= position) {
-        card.set('position', card.get('position') + 1);
-        card.save();
-      }
-    })
-    
     var newCard = new Card({title: title, listId: this.model.get('id'), position: position});
-    var self = this;
-    this.model.get('cards').create(newCard, {
-      success: function() {
-        self.model.get('cards').sort();
-        self.cardsView = new CardsView({
-          el: self.$('ul'),
-          collection: self.model.get('cards'),
-        });
+    var arrayOfCards = this.$('.cards > li');
+    
+    this.model.get('cards').create(newCard, { success: function() {
+      if (arrayOfCards.eq(position).length) {
+        arrayOfCards.eq(position).before(new CardView({ model: newCard, tagName: 'li', attributes: {'data-id': newCard.get('id')}}).el);
+      } else {
+        this.cardsView.renderCard(newCard);
       }
-    });
+    }});
     
+    App.cards.add(newCard);
+    this.reorderPositions();
     
-    
+  },
+  moveCard: function() {
+    this.reorderPositions();
+    this.model.setCards(App.cards);
   },
   reorderPositions: function() {
     var self = this;
@@ -117,7 +118,6 @@ var ListView = Backbone.View.extend({
       var cardId = parseInt(card.getAttribute('data-id'));
       var matchingCard = App.cards.findWhere({id: cardId});
       var listId = parseInt(self.$('.cards').attr('data-list_id'));
-      console.log(listId);
       matchingCard.set('listId', listId);
       matchingCard.set('position', index);
       matchingCard.save();
@@ -136,6 +136,7 @@ var ListView = Backbone.View.extend({
     });
     
     this.listenTo(App, 'copy' + this.model.get('id'), this.copyCard);
+    this.listenTo(App, 'move' + this.model.get('id'), this.moveCard);
     this.listenTo(this.model, 'reorder', this.reorderPositions);
   }
 });

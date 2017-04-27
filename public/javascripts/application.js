@@ -60,6 +60,16 @@ var App = {
     })[0].value;
     this.trigger('copy' + listId, copyArray);
   },
+  moveCard: function(moveArray, sourceListId) {
+    var listId = parseInt(moveArray.filter(function(object) {
+      return object.name === 'list';
+    })[0].value);
+    
+    this.trigger('move' + listId);
+    if (!(listId === sourceListId)) {
+      this.trigger('move' + sourceListId);
+    }
+  },
   turnOffDocumentListener: function() {
     if (this.openPopups === 0) {
       $(document).off('click');

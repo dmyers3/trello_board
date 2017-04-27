@@ -120,7 +120,7 @@ this["JST"]["copy"] = Handlebars.template({"1":function(container,depth0,helpers
     + ((stack1 = helpers.each.call(alias1,(depth0 != null ? depth0.lists : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "</select><select name=\"position\" class=\"positions\">"
     + ((stack1 = helpers.each.call(alias1,(depth0 != null ? depth0.positions : depth0),{"name":"each","hash":{},"fn":container.program(3, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "</select><button class=\"btn\" type=\"submit\">Create Card</button></form>";
+    + "</select><button class=\"btn copy_btn\" type=\"submit\">Create Card</button></form>";
 },"useData":true});
 
 this["JST"]["labels"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
@@ -180,7 +180,7 @@ this["JST"]["move"] = Handlebars.template({"1":function(container,depth0,helpers
     + ((stack1 = helpers.each.call(alias1,(depth0 != null ? depth0.lists : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "</select><select name=\"position\" class=\"positions\">"
     + ((stack1 = helpers.each.call(alias1,(depth0 != null ? depth0.positions : depth0),{"name":"each","hash":{},"fn":container.program(3, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "</select><button class=\"btn\" type=\"submit\">Move</button></form>";
+    + "</select><button class=\"btn move_btn\" type=\"submit\">Move</button></form>";
 },"useData":true});
 
 this["JST"]["notification"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
