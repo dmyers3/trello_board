@@ -10,7 +10,7 @@ var BoardView = Backbone.View.extend({
     "click .title_popup .x_close": "closeTitlePopup",
     "click h1 .title": "toggleTitlePopup",
     "click .add_list.container input": "toggleAddListDisplay",
-    "click .add_list.action .x_close": "closeAddListPopup"
+    "click .add_list.action .x_close": "closeAddListPopup",
   },
   renameBoard: function(e) {
     e.preventDefault();
@@ -87,5 +87,6 @@ var BoardView = Backbone.View.extend({
       el: this.$('ul'),
       collection: this.model.get('lists'),
     });
+    
   }
 });

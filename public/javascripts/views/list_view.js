@@ -121,7 +121,6 @@ var ListView = Backbone.View.extend({
      
     this.$('.cards > li').each(function(index, card) {
       var cardId = parseInt(card.getAttribute('data-id'));
-      console.log('trigger');
       var matchingCard = App.cards.findWhere({id: cardId});
       var listId = parseInt(self.$('.cards').attr('data-list_id'));
       matchingCard.set('listId', listId);

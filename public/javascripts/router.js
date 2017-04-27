@@ -11,8 +11,6 @@ var router = new (Backbone.Router.extend({
   },
   index: function() { 
     if (App.boardView) {
-      App.refresh();
-      // App.boardView = new BoardView({model: App.board, el: 'main'});
       App.trigger('removeModal');
     }
     // router.navigate(App.board.get('title'));

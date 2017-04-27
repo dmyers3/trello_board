@@ -41,7 +41,8 @@ var App = {
       sourceListId = parseInt($(source).attr('data-list_id'));
       sourceList = self.lists.findWhere({id: sourceListId});
       sourceList.trigger('reorder');
-    })
+    });
+    
   },
   setupSearch: function() {
     $('header input').on('focus', this.createSearchView.bind(this));
@@ -92,7 +93,7 @@ var App = {
   refresh: function() {
     this.boardView = new BoardView({model: this.board, el: 'main'});
     this.setupDragAndDrop();
-    this.listenForDropEvents();
+    // this.listenForDropEvents();
   },
   init: function() {
     this.initializeBoard();
