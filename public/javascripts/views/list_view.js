@@ -19,6 +19,7 @@ var ListView = Backbone.View.extend({
   },
   changeTitle: function(e) {
     e.preventDefault();
+    
     var newTitle = this.$('.list_title input').val();
     this.model.set('title', newTitle);
     this.model.save({title: newTitle});
@@ -29,14 +30,18 @@ var ListView = Backbone.View.extend({
     this.$('h2.list_title').hide();
     this.$('form.list_title').show();
     this.$('.list_title input').val(this.model.get('title')).focus();
-    $(document).on('click', this.hideChangeTitleForm.bind(this));
+    $(document).on('click', this.clickHideChangeTitleForm.bind(this));
   },
   hideChangeTitleForm: function(e) {
+    this.$('h2.list_title').show();
+    this.$('h2.list_title span.title').html(this.model.get('title'));
+    this.$('form.list_title').hide();
+    $(document).off('click', this.clickHideChangeTitleForm);
+  },
+  clickHideChangeTitleForm: function(e) {
     e.preventDefault();
     if (!e.target.closest('.list_title')) {
-      this.$('h2.list_title').show().html(this.model.get('title'));
-      this.$('form.list_title').hide();
-      $(document).off('click', this.hideChangeTitleForm);
+      this.hideChangeTitleForm(e);
     }
   },
   toggleAddCardDisplay: function(e) {
@@ -116,6 +121,7 @@ var ListView = Backbone.View.extend({
      
     this.$('.cards > li').each(function(index, card) {
       var cardId = parseInt(card.getAttribute('data-id'));
+      console.log('trigger');
       var matchingCard = App.cards.findWhere({id: cardId});
       var listId = parseInt(self.$('.cards').attr('data-list_id'));
       matchingCard.set('listId', listId);
@@ -123,6 +129,7 @@ var ListView = Backbone.View.extend({
       matchingCard.save();
     });
     
+    this.model.setCards(App.cards);
     App.cards.sort()
   },
   initialize: function() {

@@ -34,14 +34,13 @@ var App = {
     
     
     this.cardsDrake.on('drop', function(el, target, source, sibling) {
-      sourceListId = parseInt($(source).attr('data-list_id'));
-      sourceList = self.lists.findWhere({id: sourceListId});
-      sourceList.trigger('reorder');
-      
       targetListId = parseInt($(target).attr('data-list_id'));
       targetList = self.lists.findWhere({id: targetListId});
       targetList.trigger('reorder');
       
+      sourceListId = parseInt($(source).attr('data-list_id'));
+      sourceList = self.lists.findWhere({id: sourceListId});
+      sourceList.trigger('reorder');
     })
   },
   setupSearch: function() {
