@@ -90,11 +90,6 @@ var App = {
     }
     e.stopPropagation();
   },
-  refresh: function() {
-    this.boardView = new BoardView({model: this.board, el: 'main'});
-    this.setupDragAndDrop();
-    // this.listenForDropEvents();
-  },
   init: function() {
     this.initializeBoard();
     this.setupSearch();

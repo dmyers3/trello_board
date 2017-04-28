@@ -23,8 +23,3 @@ var router = new (Backbone.Router.extend({
 Backbone.history.start({
   pushState: true
 });
-
-$(document).on("click", "a[href^='/']", function(e) {
-  e.preventDefault();
-  router.navigate($(e.currentTarget).attr("href").replace(/^\//, ""), { trigger: true});
-});

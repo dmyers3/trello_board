@@ -31,13 +31,6 @@ var Lists = {
     fs.writeFileSync(filePath, JSON.stringify(listsData), "utf8");
     return list;
   },
-  updateAll: function(newLists) {
-    var oldListsData = JSON.parse(fs.readFileSync(filePath, "utf8"));
-    var oldLists = oldListsData.data;
-    oldLists = newLists;
-    fs.writeFileSync(filePath, JSON.stringify(oldListsData), "utf8");
-    
-  },
   delete: function(id) {
     var idx = parseInt(id);
     var listsData = JSON.parse(fs.readFileSync(filePath, "utf8"));

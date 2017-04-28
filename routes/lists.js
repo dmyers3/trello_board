@@ -17,11 +17,6 @@ module.exports = function(router) {
     res.json(list).end();
   });
   
-  router.patch('/lists', function(req, res, next) {
-    Lists.updateAll(req.body);
-    res.json({});
-  });
-  
   router.delete("/lists/:id", function(req, res, next) {
     var id = req.params.id;
     Lists.delete(id);

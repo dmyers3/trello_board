@@ -37,13 +37,6 @@ var Cards = {
     cardsData.data = cards;
     fs.writeFileSync(filePath, JSON.stringify(cardsData), "utf8");
   },
-  updateAll: function(cardsData) {
-    var allCardsData = JSON.parse(fs.readFileSync(filePath, "utf8"));
-    allCardsData.data= cardsData;
-    fs.writeFileSync(filePath, JSON.stringify(allCardsData), "utf8");
-    
-    
-  },
   getLastID: function() {
     return JSON.parse(fs.readFileSync(filePath, "utf8")).last_id;
   },

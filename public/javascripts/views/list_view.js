@@ -114,7 +114,7 @@ var ListView = Backbone.View.extend({
   },
   moveCard: function() {
     this.reorderPositions();
-    this.model.setCards(App.cards);
+    // this.model.setCards(App.cards);
   },
   reorderPositions: function() {
     var self = this;
